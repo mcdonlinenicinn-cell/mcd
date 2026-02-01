@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MCD – Health Trade License</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:"Segoe UI", Arial, sans-serif;
+  background:#eef3f8;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  color:#1f2937;
+}
+.page-content{flex:1}
+
+/* HEADER */
+.header{
+  background:linear-gradient(90deg,#0d4f8b,#0b3e6f);
+  color:#fff;
+  padding:12px 24px;
+  display:flex;
+  align-items:center;
+  box-shadow:0 2px 6px rgba(0,0,0,.15);
+}
+.header img{height:56px;margin-right:16px}
+.header h2{margin:0;font-size:20px;font-weight:600}
+
+/* TITLE */
+.title{
+  padding:16px 24px;
+  font-size:25px;
+  font-weight:600;
+  
+  background: linear-gradient(270deg,#43768B,#7EB96B,#4FA3C7);
+  background-size: 400% 400%;
+  background-clip:text;
+  -webkit-background-clip:text;
+  color: transparent;
+  animation: gradientMove 6s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+}
+
+/* CONTROLS */
+.controls{
+  padding:14px 24px;
+  background:#ffffff;
+  display:flex;
+  gap:10px;
+  align-items:center;
+  border-bottom:1px solid #dde7f0;
+}
+.controls input{
+  padding:8px 10px;
+  width:280px;
+  border:1px solid #cfd8e3;
+  border-radius:4px;
+}
+.controls button{
+  padding:8px 14px;
+  border:none;
+  border-radius:4px;
+  cursor:pointer;
+  font-weight:500;
+}
+.controls button:first-of-type{
+  background:#0d4f8b;
+  color:#fff;
+}
+.controls button:last-of-type{
+  background:#2f4fa2;
+  color:#fff;
+}
+.controls button:hover{opacity:.9}
+
+/* TABLE */
+.table-container{padding:20px}
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:#ffffff;
+  box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+th{
+  background:#e7f1f7;
+  padding:10px;
+  border:1px solid #cfe0ea;
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:.03em;
+}
+td{
+  padding:10px;
+  border:1px solid #e1ecf2;
+  font-size:13px;
+  vertical-align:top;
+}
+tr:nth-child(even){background:#f7fbfe}
+tr:hover{background:#eef6fc}
+
+/* BUTTON */
+.view-btn{
+  background:#0d4f8b;
+  color:#fff;
+  border:none;
+  padding:6px 12px;
+  border-radius:3px;
+  cursor:pointer;
+}
+.view-btn:hover{background:#083b68}
+
+/* DETAILS */
+.details-row{display:none;background:#0d4f8b;color:#ffffff}
+.details-box{
+  padding:16px;
+  font-size:13px;
+  display:flex;
+  flex-wrap:wrap;
+}
+.details-box span{width:33%;margin-bottom:6px}
+
+/* FOOTER */
+.footer{
+  background:#2f4fa2;
+  color:#ffeb00;
+  text-align:center;
+  font-size:12px;
+  padding:10px 14px;
+  line-height:1.6;
+}
+.footer .small{color:#ffffff;font-size:11px;margin-top:4px}
+
+/* SIDE NAV */
+.nav-btn{
+  position:fixed;
+  top:45%;
+  left:0;
+  background:#0d4f8b;
+  padding:10px;
+  border-radius:0 6px 6px 0;
+  cursor:pointer;
+  z-index:9999;
+}
+.nav-btn img{width:34px}
+
+.side-nav{
+  position:fixed;
+  top:0;
+  left:-260px;
+  width:260px;
+  height:100%;
+  background:#ffffff;
+  box-shadow:3px 0 15px rgba(0,0,0,.25);
+  transition:.3s;
+  z-index:9998;
+  padding-top:70px;
+}
+.side-nav h3{
+  padding:12px 16px;
+  margin:0;
+  background:#0d4f8b;
+  color:#fff;
+  font-size:15px;
+}
+.side-nav ul{list-style:none;margin:0;padding:0}
+.side-nav li{
+  display:flex;
+  align-items:center;
+  padding:12px 16px;
+  border-bottom:1px solid #eee;
+  cursor:pointer;
+}
+.side-nav li:hover{background:#f2f6fb}
+.side-nav li img{width:28px;margin-right:12px}
+.side-nav li span{font-size:13px}
+
+/* PRINT */
+@media print{
+  .nav-btn,.side-nav,.controls button{display:none}
+  body{background:#fff}
+  table{box-shadow:none}
+}
+/* Vertical HELP DESK tab */
+.help-tab {
+  position: fixed;
+  right: 0;
+  top: 45%;
+  background: #f58220;
+  color: #fff;
+  padding: 12px 8px;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 6px 0 0 6px;
+  z-index: 1000;
+}
+
+/* Popup box */
+.help-box {
+  position: fixed;
+  right: -360px;
+  top: 28%;
+  width: 330px;
+  background: #fff;
+  border: 2px solid #f58220;
+  padding: 15px 18px;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 1001;
+}
+
+/* Show popup */
+#helpToggle:checked ~ .help-box {
+  right: 20px;
+}
+
+/* Close button */
+.close {
+  position: absolute;
+  top: -14px;
+  left: -14px;
+  width: 28px;
+  height: 28px;
+  background: #f58220;
+  color: #fff;
+  text-align: center;
+  line-height: 28px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Heading */
+.help-box h3 {
+  margin: 0 0 10px;
+  color: #555;
+  font-size: 18px;
+}
+
+/* List styling */
+.help-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.help-box li {
+  margin-bottom: 10px;
+  color: #666;
+  font-size: 14px;
+}
+
+/* Links */
+.help-box a {
+  color: #2a57ff;
+  text-decoration: none;
+}
+
+/* Muted text */
+.muted {
+  color: #888;
+}
+</style>
+</style>
+
+<script>
+function searchTable(){
+  let input=document.getElementById("search").value.toLowerCase();
+  let row=document.getElementById("dataRow");
+  row.style.display=row.innerText.toLowerCase().includes(input)?"":"none";
+}
+function printPage(){window.print();}
+function toggleDetails(){
+  let row=document.getElementById("detailsRow");
+  row.style.display=row.style.display==="table-row"?"none":"table-row";
+}
+function toggleNav(){
+  let nav=document.getElementById("sideNav");
+  nav.style.left=nav.style.left==="0px"?"-260px":"0px";
+}
+</script>
+</head>
+
+<body>
+
+<div class="nav-btn" onclick="toggleNav()">
+<div class="side-nav" id="sideNav">
+<ul>
+<li style="list-style:none; display:flex; align-items:center;"><img src="https://mcdonline.nic.in/portal/static/images/mcd.png"alt="MCD Logo"
+    style="
+      height:250px;
+      width:250px;
+      margin-right:9px;
+      display:block;
+    " ></li>
+  <h3>Municipal Corporation of Delhi</h3>
+  <ul>
+    <li><img src="https://cdn-icons-png.flaticon.com/512/847/847969.png"><a href="https://mcdonline.nic.in/htlmcd/web/citizen/info" 
+        <span>My profile</span></li></a>
+    <li><img src="https://cdn0.iconfinder.com/data/icons/package-and-delivery-bruno/32/add_balance-512.png"><a href="https://mcdonline.nic.in/htlmcd/web/citizen/info"<span>My 	balance</span></li></a>
+    <li><img src="https://cdn-icons-png.flaticon.com/512/561/561127.png"><a href="https://mcdonline.nic.in/htlmcd/web/citizen/info"<span>Inbox</span></li></a>
+    <li><img src="https://cdn-icons-png.flaticon.com/512/2099/2099058.png"><a href="https://mcdonline.nic.in/htlmcd/web/citizen/info"<span>Account setting</span></li></a>
+    <li><img src="https://cdn-icons-png.flaticon.com/512/1828/1828490.png"><a href="https://mcdonline.nic.in/htlmcd/web/citizen/info"<span>Logout</span></li></a>
+
+
+  </ul>
+</div>
+</div>
+
+<div class="page-content">
+
+  <div class="header">
+    <img src="https://mcdonline.nic.in/portal/static/images/mcd.png">
+    <h2>Municipal Corporation of Delhi</h2>
+  </div>
+
+  <div class="title">Health Trade License</div>
+
+  <div class="controls">
+    <input type="text" id="search" placeholder="Search Application / License No">
+    <button onclick="searchTable()">Search</button>
+    <button onclick="printPage()">Print / PDF</button>
+  </div>
+
+  <div class="table-container">
+    <table>
+      <tr>
+        <th>Sr.No.</th>
+        <th>Application Number</th>
+        <th>License Number</th>
+        <th>Application Type</th>
+        <th>Applied Date</th>
+        <th>Trade Description</th>
+        <th>Trade Type</th>
+        <th>Trade Name</th>
+        <th>Address</th>
+        <th>Status</th>
+        <th>Status Date</th>
+        <th>Action</th>
+      </tr>
+
+      <tr id="dataRow">
+        <td>1</td>
+        <td>2505082892868</td>
+        <td>HLRZ-2505081901145</td>
+        <td>NEW</td>
+        <td>29/01/2026</td>
+        <td>Entertainmend And Recreational</td>
+        <td>Health Club/Gymnasium</td>
+        <td>AESTHETIC FITNESS</td>
+        <td>WZ-56/A, FIRST FLOOR, VILLAGE JWALA HERI, PASCHIM VIHAR, WEST DELHI NEW DELHI-110063</td>
+        <td>Submitted to Process</td>
+        <td>31/01/2026</td>
+        <td><button class="view-btn" onclick="toggleDetails()">View Details</button></td>
+      </tr>
+
+      <tr id="detailsRow" class="details-row">
+        <td colspan="12">
+          <div class="details-box">
+            <span><b>Owner Name:</b> Hema Yadav</span>
+            <span><b>Mobile:</b> 98XXXXXX45</span>
+            <span><b>Ward:</b> 58-S</span>
+            <span><b>Zone:</b> Keshavpuram Zone</span>
+            <span><b>Premises Area:</b> 168.00 Sq. Meter</span>
+            <span><b>License Fee:</b> ₹37,900</span>
+            <span><b>Validity:</b> 29-01-2026 to 31-03-2026</span>
+            <span><b>Issuing Authority:</b> MCD Health Dept.</span>
+            <span><b>Remarks:</b> Site Inspection</span>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="footer">
+  <div><b>Disclaimer</b></div>
+  <div>
+    This Site has been Designed, Developed and Hosted by National Informatics Centre,
+    Ministry of Electronics & IT (MeitY), Government of India
+  </div>
+  <div>
+    No page or information of this website can be reproduced without permission of competent authority.
+  </div>
+  <div class="small">
+    Copyright © 2020 | Compatible Browsers
+  </div>
+  <div>
+    The contents of this website are updated and owned by Web Information Manager
+  </div>
+</div>
+<input type="checkbox" id="helpToggle" hidden>
+
+<label for="helpToggle" class="help-tab">HELP DESK</label>
+
+<div class="help-box">
+  <label for="helpToggle" class="close">✕</label>
+
+  <h3>📞 Help Desk</h3>
+
+  <ul>
+    <li>
+      📞 <strong>Helpline Number (CCR)</strong> : 155305
+    </li>
+
+    <li>
+      ✉ <strong>e-Mail ID</strong> :
+      <br>
+      <a href="#">
+        mcd-ithelpdesk[at]mcd[dot]nic[dot]in
+      </a>
+    </li>
+
+    <li>
+      🔗 <a href="https://mcd.everythingcivic.com/login">Click here for Complaint</a>
+    </li>
+
+    <li>
+      📱 <strong>Mobile App</strong> :
+      <br>
+      <span class="muted">UMA (Unified Mobile APP)</span><br>
+      <span class="muted">MCD311 APP</span>
+    </li>
+  </ul>
+
+</body>
+</html>
