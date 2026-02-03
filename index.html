@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <title>MCD – Health Trade License</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 <style>
 *{box-sizing:border-box}
@@ -16,20 +17,56 @@ body{
   flex-direction:column;
   color:#1f2937;
 }
+.box{
+padding:20px
+backgroun:#f2fkj
+}
+@media(min-width:768px){
+.box{
+width:70%;
+margin:auto;
+}
+}
 .page-content{flex:1}
 
 /* HEADER */
 .header{
-  background:linear-gradient(90deg,#0d4f8b,#0b3e6f);
+  background: linear-gradient(120deg,#0d4f8b,#1b6fb8,#0b3e6f);
+  background-size: 300% 300%;
+  animation: headerFlow 8s ease infinite;
   color:#fff;
-  padding:12px 24px;
+  padding:28px 29px;
   display:flex;
   align-items:center;
-  box-shadow:0 2px 6px rgba(0,0,0,.15);
+  gap:18px;
+  position:sticky;
+  top:0;
+  z-index:1200;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.25);
 }
-.header img{height:56px;margin-right:16px}
-.header h2{margin:0;font-size:20px;font-weight:600}
 
+@keyframes headerFlow{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+.header h2{
+  margin:0;
+  margin-left:60px;
+  font-size:21px;
+  font-weight:750;
+  letter-spacing:0px;
+  
+}
+/* NAV BUTTON */
+.nav-btn{
+  position:fixed;
+  top:7px;        /* exact vertical location */
+  left:20;           /* LEFT side */
+  z-index:1300;
+  cursor:pointer;
+}
 /* TITLE */
 .title{
   padding:16px 24px;
@@ -37,11 +74,10 @@ body{
   font-weight:600;
   
   background: linear-gradient(270deg,#43768B,#7EB96B,#4FA3C7);
-  background-size: 400% 400%;
+  background-size: 600% 600%;
   background-clip:text;
-  -webkit-background-clip:text;
   color: transparent;
-  animation: gradientMove 6s ease infinite;
+  animation: gradientMove 2s ease infinite;
 }
 
 @keyframes gradientMove {
@@ -81,23 +117,28 @@ body{
   background:#2f4fa2;
   color:#fff;
 }
-.controls button:hover{opacity:.9}
+.controls button:hover{opacity:.5}
 
 /* TABLE */
-.table-container{padding:20px}
+.table-container{padding:30px}
 table{
-  width:100%;
-  border-collapse:collapse;
-  background:#ffffff;
-  box-shadow:0 2px 10px rgba(0,0,0,.08);
+  border: 1px solid #cf59591;
+  border-radius: 15px;
+  overflow: hidden;
+
+
 }
 th{
-  background:#e7f1f7;
-  padding:10px;
-  border:1px solid #cfe0ea;
-  font-size:13px;
-  text-transform:uppercase;
-  letter-spacing:.03em;
+  color: #2b5f73;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 15px 15px;
+  text-align: center;
+  border-right: -10px;
+  border-bottom: 1px solid #cfe8f1;
+  white-space: nowrap;
+
+
 }
 td{
   padding:10px;
@@ -105,29 +146,41 @@ td{
   font-size:13px;
   vertical-align:top;
 }
-tr:nth-child(even){background:#f7fbfe}
-tr:hover{background:#eef6fc}
+tbody th {
+  background: linear-gradient(#cfe8f1, transparent, #e1edf1,transparent,#cfe8f1, transparent, #e1edf1,transparent,#cfe8f1, transparent, #e1edf1,transparent,#cfe8f1, transparent, #e1edf1,transparent,#cfe8f1, transparent, #e1edf1,transparent,#cfe8f1, transparent, #e1edf1,transparent  50%);
+}
+tbody tr:hover {
+  background: linear-gradient(#3471c525%);
+}
 
 /* BUTTON */
 .view-btn{
   background:#0d4f8b;
   color:#fff;
   border:none;
-  padding:6px 12px;
-  border-radius:3px;
+  padding:5px 12px;
+  border-radius:30px;
   cursor:pointer;
 }
 .view-btn:hover{background:#083b68}
 
 /* DETAILS */
-.details-row{display:none;background:#0d4f8b;color:#ffffff}
+.details-row{
+ display:none;
+ background:#0d4f8b;
+ color:#ffffff
+}
 .details-box{
-  padding:16px;
-  font-size:13px;
+  padding:0px;
+  font-size:15px;
   display:flex;
   flex-wrap:wrap;
 }
-.details-box span{width:33%;margin-bottom:6px}
+.details-box span
+{
+ width:16%;
+ margin-bottom:0px
+}
 
 /* FOOTER */
 .footer{
@@ -140,48 +193,98 @@ tr:hover{background:#eef6fc}
 }
 .footer .small{color:#ffffff;font-size:11px;margin-top:4px}
 
-/* SIDE NAV */
-.nav-btn{
-  position:fixed;
-  top:45%;
-  left:0;
-  background:#0d4f8b;
-  padding:10px;
-  border-radius:0 6px 6px 0;
-  cursor:pointer;
-  z-index:9999;
-}
-.nav-btn img{width:34px}
 
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(13,79,139,.6)}
+  70%{box-shadow:0 0 0 14px rgba(13,79,139,0)}
+  100%{box-shadow:0 0 0 0 rgba(13,79,139,0)}
+}
 .side-nav{
   position:fixed;
-  top:0;
-  left:-260px;
-  width:260px;
-  height:100%;
-  background:#ffffff;
-  box-shadow:3px 0 15px rgba(0,0,0,.25);
-  transition:.3s;
-  z-index:9998;
+  top:-70px;
+  left:-270px;
+  width:220px;
+  height:200%;
+  backdrop-filter: blur(14px);
+  transition: 0.35s cubic-bezier(.68,-0.55,.27,1.55);
+  z-index:1100;
   padding-top:70px;
+
 }
+/* MCD Heading */
 .side-nav h3{
-  padding:12px 16px;
   margin:0;
-  background:#0d4f8b;
+  padding:14px 18px;
+  background: linear-gradient(90deg,#0d4f8b,#1f7fd6);
   color:#fff;
   font-size:15px;
+  letter-spacing:.10px;
+  text-transform:uppercase;
+  box-shadow: inset 0 -2px 0 rgba(255,255,255,.2);
 }
-.side-nav ul{list-style:none;margin:0;padding:0}
+.side-nav ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+
 .side-nav li{
+  position:relative;
+  overflow:hidden;
+  background-color:#fff;
+}
+/* NAV LINKS */
+.side-nav a{
   display:flex;
   align-items:center;
-  padding:12px 16px;
-  border-bottom:1px solid #eee;
-  cursor:pointer;
+  gap:12px;
+  padding:13px 18px;
+  font-size:14px;
+  color:#1f2937;
+  text-decoration:none;
+  transition:.3s ease;
+  position:relative;
+  z-index:1;
+}
+.side-nav li::before{
+  content:"";
+  position:absolute;
+  left:-100%;
+  top:0;
+  width:100%;
+  height:100%;
+  background: linear-gradient(90deg,transparent,#dbeafe,transparent);
+  transition:.4s;
+}
+
+.side-nav li:hover::before{
+   left:100%;
+
+/* HOVER EFFECT */
+.side-nav a:hover{
+  color:#0d4f8b;
+  transform: translateX(6px);
+  font-weight:600;
+}}
+
+/* REMOVE BLUE UNDERLINE */
+.side-nav a:link,
+.side-nav a:visited{
+  text-decoration:none;
+}
+
+/* LOGOUT BUTTON STYLE */
+.side-nav .logout{
+  color:#b91c1c !important;
+  font-weight:700;
+}
+
+.side-nav .logout:hover{
+  background: rgba(185,28,28,.1);
+  color:#7f1d1d !important;
 }
 .side-nav li:hover{background:#f2f6fb}
-.side-nav li img{width:28px;margin-right:12px}
+.side-nav li img{width:28px;margin-right:0px}
 .side-nav li span{font-size:13px}
 
 /* PRINT */
@@ -247,6 +350,95 @@ tr:hover{background:#eef6fc}
   font-size: 18px;
 }
 
+/* ===== VIEW PROFILE – PREMIUM BUTTON ===== */
+.profile-btn{
+  width:90%;
+  margin:18px auto;
+  padding:14px 18px;
+  border:none;
+  border-radius:18px;
+  cursor:pointer;
+
+  font-size:15px;
+  font-weight:700;
+  letter-spacing:.6px;
+  text-transform:uppercase;
+  color:#ffffff;
+
+  background: linear-gradient(135deg,#0d4f8b,#1f7fd6,#4fa3ff);
+  background-size:300% 300%;
+  animation: profileGradient 6s ease infinite;
+
+  box-shadow:
+    0 12px 28px rgba(13,79,139,.55),
+    inset 0 1px 0 rgba(255,255,255,.35);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+
+  position:relative;
+  overflow:hidden;
+}
+
+/* GRADIENT FLOW */
+@keyframes profileGradient{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+/* SHINE SWEEP */
+.profile-btn::before{
+  content:"";
+  position:absolute;
+  top:-60%;
+  left:-80%;
+  width:50%;
+  height:220%;
+  background:rgba(255,255,255,.25);
+  transform:rotate(25deg);
+  transition:.7s;
+}
+
+.profile-btn:hover::before{
+  left:130%;
+}
+
+/* HOVER LIFT + GLOW */
+.profile-btn:hover{
+  transform: translateY(-4px) scale(1.04);
+  box-shadow:
+    0 20px 45px rgba(13,79,139,.75),
+    inset 0 1px 0 rgba(255,255,255,.45);
+}
+
+/* PRESS EFFECT */
+.profile-btn:active{
+  transform: scale(.95);
+  box-shadow: 0 8px 18px rgba(13,79,139,.6);
+}
+
+/* ICON + TEXT ANIMATION */
+.profile-btn span{
+  transition:.35s ease;
+}
+
+.profile-btn:hover span{
+  transform: translateX(8px);
+}
+
+/* REMOVE LINK STYLES INSIDE */
+.profile-btn a{
+  color:#fff;
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+}
+
 /* List styling */
 .help-box ul {
   list-style: none;
@@ -270,7 +462,10 @@ tr:hover{background:#eef6fc}
 .muted {
   color: #888;
 }
-</style>
+div.scrollmenu {
+  overflow: auto;
+  white-space: nowrap;
+}
 </style>
 
 <script>
@@ -294,24 +489,59 @@ function toggleNav(){
 <body>
 
 <div class="nav-btn" onclick="toggleNav()">
+<img src="https://mcdonline.nic.in/portal/static/images/mcd.png" alt="Menu"
+style="
+      height:75px;
+      width:70px;
+      margin-left:12px;
+      display:block;
+
+    " >
 <div class="side-nav" id="sideNav">
 <ul>
-<li style="list-style:none; display:flex; align-items:center;"><img src="https://mcdonline.nic.in/portal/static/images/mcd.png"alt="MCD Logo"
+<li><img src="https://mcdonline.nic.in/portal/static/images/mcd.png"
     style="
-      height:250px;
-      width:250px;
-      margin-right:9px;
-      display:block;
-    " ></li>
+  width: 100px;
+  display: flex;
+  margin-left:45px;
+  justify-content: center;
+  
+ max-width: 100%;
+" ></li>
   <h3>Municipal Corporation of Delhi</h3>
   <ul>
-    <li><img src="https://cdn-icons-png.flaticon.com/512/847/847969.png"><a href="https://mcdonline.nic.in/htlmcd/web/citizen/info" 
-        <span>My profile</span></li></a>
-    <li><img src="https://cdn0.iconfinder.com/data/icons/package-and-delivery-bruno/32/add_balance-512.png"><a href="https://mcdonline.nic.in/htlmcd/web/citizen/info"<span>My 	balance</span></li></a>
-    <li><img src="https://cdn-icons-png.flaticon.com/512/561/561127.png"><a href="https://mcdonline.nic.in/htlmcd/web/citizen/info"<span>Inbox</span></li></a>
-    <li><img src="https://cdn-icons-png.flaticon.com/512/2099/2099058.png"><a href="https://mcdonline.nic.in/htlmcd/web/citizen/info"<span>Account setting</span></li></a>
-    <li><img src="https://cdn-icons-png.flaticon.com/512/1828/1828490.png"><a href="https://mcdonline.nic.in/htlmcd/web/citizen/info"<span>Logout</span></li></a>
+   <li>
+  <a href="https://mcdonline.nic.in/htlmcd/web/citizen/info">
+    👤 My Profile
+  </a>
+</li>
 
+<li>
+  <a href="https://mcdonline.nic.in/htlmcd/web/citizen/info">
+    💳 My Balance
+  </a>
+</li>
+
+<li>
+  <a href="https://mcdonline.nic.in/htlmcd/web/citizen/info">
+    📩 Inbox
+  </a>
+</li>
+
+<li>
+  <a href="https://mcdonline.nic.in/htlmcd/web/citizen/info">
+    ⚙️ Account Settings
+  </a>
+</li>
+
+<li>
+  <a href="https://mcdonline.nic.in/htlmcd/web/citizen/info" class="logout">
+    🚪 Logout
+  </a>
+</li>
+
+<li><button class="profile-btn"><a href="https://mcdonline.nic.in/htlmcd/web/citizen/info"><span>View Profile</button>></a></li>
+   
 
   </ul>
 </div>
@@ -320,7 +550,6 @@ function toggleNav(){
 <div class="page-content">
 
   <div class="header">
-    <img src="https://mcdonline.nic.in/portal/static/images/mcd.png">
     <h2>Municipal Corporation of Delhi</h2>
   </div>
 
@@ -331,9 +560,10 @@ function toggleNav(){
     <button onclick="searchTable()">Search</button>
     <button onclick="printPage()">Print / PDF</button>
   </div>
-
+<div class="scrollmenu">
   <div class="table-container">
     <table>
+<tbody>
       <tr>
         <th>Sr.No.</th>
         <th>Application Number</th>
@@ -348,7 +578,7 @@ function toggleNav(){
         <th>Status Date</th>
         <th>Action</th>
       </tr>
-
+       </tbody>
       <tr id="dataRow">
         <td>1</td>
         <td>2505082892868</td>
@@ -381,6 +611,7 @@ function toggleNav(){
       </tr>
     </table>
   </div>
+</div>
 </div>
 
 <div class="footer">
@@ -432,6 +663,6 @@ function toggleNav(){
       <span class="muted">MCD311 APP</span>
     </li>
   </ul>
-
+<div class="box">
 </body>
 </html>
